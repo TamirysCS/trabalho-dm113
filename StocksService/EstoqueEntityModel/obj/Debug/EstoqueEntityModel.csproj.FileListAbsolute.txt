@@ -1,0 +1,14 @@
+C:\Docs Pós\DM113 -\StocksService-TrabalhoFinal\StocksService\EstoqueEntityModel\bin\Debug\EstoqueEntityModel.dll.config
+C:\Docs Pós\DM113 -\StocksService-TrabalhoFinal\StocksService\EstoqueEntityModel\bin\Debug\EstoqueEntityModel.dll
+C:\Docs Pós\DM113 -\StocksService-TrabalhoFinal\StocksService\EstoqueEntityModel\bin\Debug\EstoqueEntityModel.pdb
+C:\Docs Pós\DM113 -\StocksService-TrabalhoFinal\StocksService\EstoqueEntityModel\bin\Debug\EntityFramework.dll
+C:\Docs Pós\DM113 -\StocksService-TrabalhoFinal\StocksService\EstoqueEntityModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Docs Pós\DM113 -\StocksService-TrabalhoFinal\StocksService\EstoqueEntityModel\bin\Debug\EntityFramework.xml
+C:\Docs Pós\DM113 -\StocksService-TrabalhoFinal\StocksService\EstoqueEntityModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Docs Pós\DM113 -\StocksService-TrabalhoFinal\StocksService\EstoqueEntityModel\obj\Debug\EstoqueEntityModel.csproj.AssemblyReference.cache
+C:\Docs Pós\DM113 -\StocksService-TrabalhoFinal\StocksService\EstoqueEntityModel\obj\Debug\EstoqueEntityModel.csproj.CoreCompileInputs.cache
+C:\Docs Pós\DM113 -\StocksService-TrabalhoFinal\StocksService\EstoqueEntityModel\obj\Debug\EstoqueEntityModel.csproj.CopyComplete
+C:\Docs Pós\DM113 -\StocksService-TrabalhoFinal\StocksService\EstoqueEntityModel\obj\Debug\EstoqueEntityModel.dll
+C:\Docs Pós\DM113 -\StocksService-TrabalhoFinal\StocksService\EstoqueEntityModel\obj\Debug\EstoqueEntityModel.pdb
+C:\Docs Pós\DM113 -\StocksService-TrabalhoFinal\StocksService\EstoqueEntityModel\obj\Debug\EstoqueEntityModel.Migrations.Criacao_do_Banco.resources
+C:\Docs Pós\DM113 -\StocksService-TrabalhoFinal\StocksService\EstoqueEntityModel\obj\Debug\EstoqueEntityModel.csproj.GenerateResource.cache
