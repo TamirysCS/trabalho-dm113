@@ -18,17 +18,82 @@ namespace ProdutoEstoques
     {
         public bool AdicionarEstoque(string NumeroProduto, int Quantidade)
         {
-            throw new NotImplementedException();
+            try
+            {
+                // Connect to the ProductsModel database
+                using (ProvedorEstoque database = new ProvedorEstoque())
+                {
+                    // Find the ProductID for the specified product
+                    int productID = (from p in database.ProdutoEstoques
+                                     where String.Compare(p.NumeroProduto, NumeroProduto) == 0
+                                     select p.Id).First();
+                    // Find the Stock object that matches the parameters passed
+                    // in to the operation
+                    ProdutoEstoque ProdutoEstoque = database.ProdutoEstoques.First(pi => pi.Id == productID);
+                    ProdutoEstoque.EstoqueProduto = Quantidade;
+                    database.ProdutoEstoques.Add(ProdutoEstoque);
+                    // Save the change back to the database
+                    database.SaveChanges();
+                }
+            }
+            catch
+            {
+                // If an exception occurs, return false to indicate failure
+                return false;
+            }
+            // Return true to indicate success
+            return true;
         }
 
         public int ConsultarEstoque(string NumeroProduto)
         {
-            throw new NotImplementedException();
+            int quantityTotal = 0;
+            try
+            {
+                // Connect to the ProductsModel database
+                using (ProvedorEstoque database = new ProvedorEstoque())
+                {
+                    // Calculate the sum of all quantities for the specified product
+                    quantityTotal = (from p in database.ProdutoEstoques
+                                     where String.Compare(p.NumeroProduto, NumeroProduto) == 0
+                                     select (int)p.EstoqueProduto).Sum();
+                }
+            }
+            catch
+            {
+                // Ignore exceptions in this implementation
+            }
+            // Return the stock level
+            return quantityTotal;
         }
 
         public bool IncluirProduto(Produto Produto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                // Connect to the EstoqueEntityModel database
+                using (ProvedorEstoque database = new ProvedorEstoque())
+                {
+                    ProdutoEstoque p = new ProdutoEstoque()
+                    {
+                        NumeroProduto = Produto.NumeroProduto,
+                        NomeProduto = Produto.NomeProduto,
+                        DescricaoProduto = Produto.DescricaoProduto,
+                        EstoqueProduto = Produto.EstoqueProduto
+                    };
+
+                    database.ProdutoEstoques.Add(p);
+                    // Save the change back to the database
+                    database.SaveChanges();
+
+                    return true;
+                }
+            }
+            catch
+            {
+                // Ignore exceptions in this implementation
+            }
+            return false;
         }
 
         public List<string> ListarProdutos()
@@ -55,20 +120,100 @@ namespace ProdutoEstoques
             // Return the list of products names
             return productsListNames;
         }
-
+                
         public bool RemoverEstoque(string NumeroProduto, int Quantidade)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (ProvedorEstoque database = new ProvedorEstoque())
+                {
+                    // Find the first product that matches the specified product code
+                    ProdutoEstoque matchingProduct = database.ProdutoEstoques.First(
+                        p => String.Compare(p.NumeroProduto, NumeroProduto) == 0);
+
+                    if (Quantidade >= matchingProduct.EstoqueProduto)
+                    {
+                        matchingProduct.EstoqueProduto = 0;
+                    }
+                    else
+                    {
+                        matchingProduct.EstoqueProduto = matchingProduct.EstoqueProduto - Quantidade;
+                    }
+
+                    //database.ProdutoEstoques.Remove(matchingProduct);
+                    database.ProdutoEstoques.Add(matchingProduct);
+                    database.SaveChanges();//?????
+                        //PAGINA 28 APOSTILA E 7 TRABALHO
+
+                    return true;
+                }
+
+            }
+            catch (Exception)
+            {
+
+                //throw;
+                // Ignore exceptions in this implementation
+            }
+
+            return false;
         }
 
         public bool RemoverProduto(string NumeroProduto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (ProvedorEstoque database = new ProvedorEstoque())
+                {
+                    // Find the first product that matches the specified product code
+                    ProdutoEstoque matchingProduct = database.ProdutoEstoques.First(
+                        p => String.Compare(p.NumeroProduto, NumeroProduto) == 0);
+
+                    database.ProdutoEstoques.Remove(matchingProduct);
+                    database.SaveChanges();
+
+                    return true;
+                }
+
+            }
+            catch (Exception)
+            {
+
+                //throw;
+                // Ignore exceptions in this implementation
+            }
+
+            return false;
         }
 
         public Produto VerProduto(string NumeroProduto)
         {
-            throw new NotImplementedException();
+            Produto Produto = null;
+
+            try
+            {
+                // Connect to the EstoqueEntityModel database
+                using (ProvedorEstoque database = new ProvedorEstoque())
+                {
+                    // Find the first product that matches the specified product code
+                    ProdutoEstoque matchingProduct = database.ProdutoEstoques.First(
+                        p => String.Compare(p.NumeroProduto, NumeroProduto) == 0);
+                    Produto = new Produto()
+                    {
+                        NumeroProduto = matchingProduct.NumeroProduto,
+                        NomeProduto = matchingProduct.NomeProduto,
+                        DescricaoProduto = matchingProduct.DescricaoProduto,
+                        EstoqueProduto = matchingProduct.EstoqueProduto
+                    };
+                }
+            }
+            catch
+            {
+                // Ignore exceptions in this implementation
+            }
+            // Return the product
+            return Produto;
+            
         }
     }
 }
