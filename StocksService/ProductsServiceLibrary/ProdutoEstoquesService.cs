@@ -5,7 +5,6 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
-using System.ServiceModel.Web;
 using System.Text;
 
 namespace ProdutoEstoques
@@ -14,7 +13,7 @@ namespace ProdutoEstoques
     // This implementation performs minimal error checking and exception handling
     [AspNetCompatibilityRequirements(
         RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
-    public class ProdutoEstoquesService : IProdutoEstoquesService
+    public class ProdutoEstoquesService : IProdutoEstoquesService, IProdutoEstoquesServiceV2
     {
         public bool AdicionarEstoque(string NumeroProduto, int Quantidade)
         {
@@ -31,7 +30,7 @@ namespace ProdutoEstoques
                     // in to the operation
                     ProdutoEstoque ProdutoEstoque = database.ProdutoEstoques.First(pi => pi.Id == productID);
                     ProdutoEstoque.EstoqueProduto += Quantidade;
-
+                                     
                     database.Entry(ProdutoEstoque).State = System.Data.Entity.EntityState.Modified;
                     // Save the change back to the database
                     database.SaveChanges();
@@ -121,7 +120,7 @@ namespace ProdutoEstoques
             // Return the list of products names
             return productsListNames;
         }
-                
+
         public bool RemoverEstoque(string NumeroProduto, int Quantidade)
         {
             try
@@ -213,6 +212,7 @@ namespace ProdutoEstoques
             }
             // Return the product
             return Produto;
+
         }
     }
 }
