@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E2338BAD-4409-40C7-AFC9-7907DEEF23ED}</ProjectGuid>
+    <ProjectGuid>{1D02D80A-7BC8-4CA4-9DD1-43CF51FA28EC}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ProdutoEstoquesClient</RootNamespace>
-    <AssemblyName>ProdutoEstoquesClient</AssemblyName>
+    <RootNamespace>ProdutoVendasClient</RootNamespace>
+    <AssemblyName>ProdutoVendasClient</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,15 +45,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProdutoEstoques.cs" />
+    <Compile Include="Connected Services\ProdutoEstoquesService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ProdutoEstoquesV2.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Connected Services\ProdutoEstoquesService\01.wsdl" />
+    <None Include="Connected Services\ProdutoEstoquesService\01.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProdutoEstoquesService\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProdutoEstoquesService\ProdutoEstoques.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProdutoEstoquesService\ProdutoVendasClient.ProdutoEstoquesService.Produto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProdutoEstoquesService\service.wsdl" />
+    <None Include="Connected Services\ProdutoEstoquesService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ProdutoEstoquesService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProdutoEstoquesService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProdutoEstoquesService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProdutoEstoquesService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

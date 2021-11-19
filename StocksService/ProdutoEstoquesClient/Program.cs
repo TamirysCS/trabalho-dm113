@@ -12,8 +12,13 @@ namespace ProdutoEstoquesClient
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Desktop Cliente");
+            Console.WriteLine("Press ENTER when the service has started");
+            Console.ReadLine();
+
             // Create a proxy object and connect to the service
-            ProdutoEstoquesServiceClient proxy = new ProdutoEstoquesServiceClient();
+            ProdutoEstoquesServiceClient proxy = 
+                new ProdutoEstoquesServiceClient("BasicHttpBinding_IProdutoEstoquesService");
 
 
             // Test the operations in the service
@@ -42,7 +47,7 @@ namespace ProdutoEstoquesClient
             Console.WriteLine();
 
 
-            // Incluir produto
+            // Incluir produto 2
             Console.WriteLine("Test 2.1: Add a new product 2");
             Produto produto2 = new Produto();
             produto2.NumeroProduto = "13000";
